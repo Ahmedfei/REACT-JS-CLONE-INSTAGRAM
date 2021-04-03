@@ -7,7 +7,7 @@ const Post = props => {
   // 🔥 Make sure the parent of Post is passing the right props!
   const { post } = props;
 
-  const [likes, setLikes] = useState [post.likes];
+  const [likes, setLikes] = useState (post.likes);
 
   const incrementLikes = () => {
     setLikes(likes + 1);
@@ -26,7 +26,7 @@ const Post = props => {
         />
       </div>
       {/* Is LikeSection getting all the props it needs to work correctly? */}
-      <likeSection incrementLikes={incrementLikes} numberOfLikes = {likes} />
+      <LikeSection incrementLikes={incrementLikes} numberOfLikes = {likes} />
       {/* Comments also wants its props! */}
       <Comments />
     </div>
