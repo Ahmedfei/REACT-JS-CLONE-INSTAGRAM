@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Comments from '../Comments/Comments';
 import LikeSection from './LikeSection';
 import PostHeader from './PostHeader';
 
 const Post = props => {
   // 🔥 Make sure the parent of Post is passing the right props!
-  const { post, likePost } = props;
+  const { post } = props;
+
+  const [likes, setLikes] = useState [post.likes];
+
+  const incrementLikes = () => {
+    setLikes(likes + 1);
+  };
 
   return (
     <div className='post-border'>
       <PostHeader
         username={post.username}
-        thumbnailUrl={post.thumbnailUrl}
-      />
+        thumbnailUrl={post.thumbnailUrl}/>
       <div className='post-image-wrapper'>
         <img
           alt='post thumbnail'
@@ -21,7 +26,7 @@ const Post = props => {
         />
       </div>
       {/* Is LikeSection getting all the props it needs to work correctly? */}
-      <LikeSection likePost={() => likePost(post.id)} />
+      <likeSection incrementLikes={incrementLikes} numberOfLikes = {likes} />
       {/* Comments also wants its props! */}
       <Comments />
     </div>
